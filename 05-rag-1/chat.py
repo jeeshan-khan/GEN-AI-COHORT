@@ -5,15 +5,15 @@ import os
 from openai import OpenAI
 
 client = OpenAI(
-    api_key="AIzaSyCRgdqi8elWuIGBpr-ecC7lecM_0q2kwr4",
+    api_key="",
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
 )
 
-os.environ["GOOGLE_API_KEY"] = "AIzaSyCRgdqi8elWuIGBpr-ecC7lecM_0q2kwr4"
+os.environ["GOOGLE_API_KEY"] = ""
 
 embeddings = GoogleGenerativeAIEmbeddings(
     model="models/embedding-001",
-    api_key="AIzaSyCRgdqi8elWuIGBpr-ecC7lecM_0q2kwr4"
+    api_key=""
 )
 
 vector_db = QdrantVectorStore.from_existing_collection(

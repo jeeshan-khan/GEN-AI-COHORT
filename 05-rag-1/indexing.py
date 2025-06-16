@@ -5,7 +5,7 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_qdrant import QdrantVectorStore
 import os
 
-os.environ["GOOGLE_API_KEY"] = "AIzaSyCRgdqi8elWuIGBpr-ecC7lecM_0q2kwr4"
+os.environ["GOOGLE_API_KEY"] = ""
 
 pdf_path = Path(__file__).parent / "example.pdf"
 loader = PyPDFLoader(file_path=pdf_path)
@@ -22,7 +22,7 @@ split_docs = text_splitter.split_documents(documents=docs)
 #embedding model
 embeddings = GoogleGenerativeAIEmbeddings(
     model="models/embedding-001",
-    api_key="AIzaSyCRgdqi8elWuIGBpr-ecC7lecM_0q2kwr4"
+    api_key=""
 )
 
 
