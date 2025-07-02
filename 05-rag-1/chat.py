@@ -1,7 +1,7 @@
-
+# flake8: noqa
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_qdrant import QdrantVectorStore
-import os
+
 from openai import OpenAI
 
 client = OpenAI(
@@ -9,7 +9,7 @@ client = OpenAI(
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
 )
 
-os.environ["GOOGLE_API_KEY"] = ""
+# os.environ["GOOGLE_API_KEY"] = "AIzaSyCRgdqi8elWuIGBpr-ecC7lecM_0q2kwr4"
 
 embeddings = GoogleGenerativeAIEmbeddings(
     model="models/embedding-001",
@@ -34,16 +34,16 @@ while True:
     results = vector_db.similarity_search(query=query)
 
     context = "\n\n\n".join([
-        f"Page Content: {result.page_content}\nPage Number: {result.metadata['page_label']}\nFile Location: {result.metadata['source']}"
+        f"Page Content: {result.page_content}\n Page Number: {result.metadata['page_label']}\nFile Location: {result.metadata['source']}"
         for result in results
     ])
 
     SYSTEM_PROMPT = f"""
-    You are a helpful AI Assistant who answers user queries based on the available context
-    retrieved from a PDF file along with page contents and page number.
-
-    You should only answer the user based on the following context and guide them
-    to open the right page number to know more.
+    You are a helpful AI Assistant who answers user queries based on the
+    available context retrieved from a PDF file along with page contents and
+    page number.
+    You should only answer the user based on the following context and guide
+    them to open the right page number to know more.
 
     Context:
     {context}

@@ -3,9 +3,7 @@ from pathlib import Path
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_qdrant import QdrantVectorStore
-import os
-
-# os.environ["GOOGLE_API_KEY"] = ""
+# import os
 
 pdf_path = Path(__file__).parent / "example.pdf"
 loader = PyPDFLoader(file_path=pdf_path)
@@ -14,7 +12,6 @@ docs = loader.load()
 text_splitter = RecursiveCharacterTextSplitter(
     chunk_size=1000,
     chunk_overlap=400
- 
 )
 
 split_docs = text_splitter.split_documents(documents=docs)
