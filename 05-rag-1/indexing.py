@@ -3,7 +3,13 @@ from pathlib import Path
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_qdrant import QdrantVectorStore
-# import os
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
+api_key = os.getenv("GOOGLE_API_KEY")
 
 pdf_path = Path(__file__).parent / "example.pdf"
 loader = PyPDFLoader(file_path=pdf_path)
@@ -19,7 +25,7 @@ split_docs = text_splitter.split_documents(documents=docs)
 # embedding model
 embeddings = GoogleGenerativeAIEmbeddings(
     model="models/embedding-001",
-    api_key=""
+    api_key=api_key
 )
 
 

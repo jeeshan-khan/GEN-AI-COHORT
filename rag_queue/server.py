@@ -1,3 +1,4 @@
+# flake8: noqa
 from fastapi import FastAPI,Query
 from .job_queue.connection import queue  # ✅ absolute import
 from .job_queue.worker import process_query
