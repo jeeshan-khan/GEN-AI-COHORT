@@ -29,6 +29,7 @@ vector_db = QdrantVectorStore.from_existing_collection(
 
 
 async def process_query(query: str):
+    print("User Query", query)
     print("Searching chunks", query),
     results = vector_db.similarity_search(
         query=query

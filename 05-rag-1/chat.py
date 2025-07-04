@@ -17,7 +17,7 @@ embeddings = GoogleGenerativeAIEmbeddings(
 )
 
 vector_db = QdrantVectorStore.from_existing_collection(
-    url="http://localhost:6333",
+    url="http://vector-db:6333",
     collection_name="Learning_RAG",
     embedding=embeddings
 )
